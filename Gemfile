@@ -27,6 +27,7 @@ gem 'bootstrap-sass'
 gem 'formtastic', '2.3.0.rc2'
 gem 'formtastic-bootstrap'
 
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

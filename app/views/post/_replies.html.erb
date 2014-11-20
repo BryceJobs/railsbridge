@@ -1,0 +1,17 @@
+<div class = 'col-md-offset-2'>	
+	<h2>Replies</h2>
+	<table class = 'table table-striped'>
+		<% replies.each do |r| %>
+			<tr>
+				<td>
+					<p><%= r.content %></p>
+					<p><small>--<%= r.user.email %> on <%= r.created_at.to_formatted_s :long %></small> 
+					<% if r.owner? current_user %>
+					 <%=  link_to "delete",  delete_reply_path(r.post, r), method: :delete, data: {confirm: 'sure?'}, class: "pull-right" %>
+					<% end -%>
+					</p>
+				</td>
+			</tr>
+		<% end -%>
+	</table>
+</div>

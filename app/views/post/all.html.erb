@@ -1,0 +1,14 @@
+<div class = 'page-header'>
+	<h1>All Posts <%= link_to 'new post', new_post_path, class: 'btn btn-primary' %> | 
+		<%= link_to 'show my posts', user_posts_path, class: 'btn btn-info' %>
+	</h1>	
+</div>
+<div class = "container">
+	<div class = "row-fluid">
+		<% @posts.each do |p| %>
+			<p><%= render 'all_posts', post: p %></p>
+		<% end %>
+		
+	</div>
+</div>
+<br>

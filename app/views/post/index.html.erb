@@ -1,0 +1,9 @@
+<div class = 'page-header'>
+	<h1>My posts List <%= link_to 'new post', new_post_path, class: 'btn btn-primary' %> | 
+		<%= link_to 'show all posts', show_all_posts_path, class: 'btn btn-info' %>
+	</h1>	
+</div>
+<% @posts.each do |p| %>
+	<p><%= render 'post', post: p %></p>
+<% end %>
+<br>

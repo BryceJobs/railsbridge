@@ -1,0 +1,20 @@
+<div class = "form-border">
+<h2>Sign up</h2>
+
+<%= semantic_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+     <%= f.inputs do %>
+	  	<%= f.input :email, autofocus: true, placeholder: 'email@company.com', label: false %>
+
+	 	<%= f.input :password, autocomplete: "off", placeholder: "password", label: false %>
+
+	    <%= f.input :password, autocomplete: "off", placeholder: "password confirmation", label: false %>
+	  
+	  <% end -%>
+
+  <%= f.action :submit, label: "Sign up", button_html: { class: "btn btn-primary"} %>
+<% end %>
+
+<%= render "devise/shared/links" %>
+</div>

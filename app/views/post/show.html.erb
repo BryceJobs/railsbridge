@@ -1,0 +1,24 @@
+<div class = 'container ' >
+	<h1><%= @post.title %></h1>
+	<p>posted by <strong><%= @post.user.email %></strong>
+	 <br> on <%= @post.created_at.to_formatted_s :long %></p>
+
+	 <h4><%= @post.content %></h4>
+	<br>
+	<hr>
+	<% if @post.replies_count == 0 %>
+		<small>no reply right now be the first to write one</small>
+	<% else %>
+		<%= render 'replies', replies: @replies %>
+	<% end -%>
+	<hr>
+	<div class = 'well'>
+		<h3>Add reply</h3>
+		<%= semantic_form_for [@post, @post.replies.build] do |f| %>
+			
+			<%= f.input :content, input_html: {class: 'autogrow', rows: 9, cols: 100} %>
+			<%= f.action :submit , button_html: {class: 'btn btn-primary', disable_with: '...wait...'} %>
+
+		<% end -%>
+	</div>
+</div>

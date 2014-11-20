@@ -1,0 +1,10 @@
+<div class = 'container well'>
+
+	<%= link_to post.title, show_post_path(post.id) %> at <%= time_ago_in_words post.created_at %>
+	<span class= 'pull-right'>
+		<%= link_to "edit", :action => "edit", id: post.id %> |
+		<%= link_to "delete", {:action => "destroy", id: post.id}, method: :delete, data: {confirm: 'are you sure you wanna delete this post?'} %>
+		<%= pluralize post.replies.count, 'reply' %>,
+		votes summary : <%= post.votes_summary %>  
+	</span> 
+</div>

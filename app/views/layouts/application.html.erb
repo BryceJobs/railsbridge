@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Railsbridge</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <!--[if IE 6]><%= stylesheet_link_tag 'formtastic_ie6' %><![endif]-->
+  <!--[if IE 7]><%= stylesheet_link_tag 'formtastic_ie7' %><![endif]-->
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class = 'navbar navbar-inverse navbar-fixed-top'>
+    <div class = 'container'>
+    <div class = 'navbar-header'>
+      <a class = 'navbar-brand' href="<%= root_path %>"> Message Board </a>
+    </div>
+    <ul class = "nav navbar-nav">
+      <li id="home" class= "<%= set_active('home') %>"><a href="<%= root_path %>">Home</a></li>
+      <li id='posts' class= "<%=set_active 'post' %>"><a href="<%= user_posts_path %>">Posts</a></li>
+    </ul>
+    <p class = "navbar-text pull-right">
+        <% if user_signed_in? %>
+          signed in as <%= current_user.email %> | <%= link_to 'sign out', user_logout_path %>
+        <% else %>
+          <%= link_to 'Sign in', user_session_path %> |
+          <%= link_to 'Sign up', new_user_registration_path %>
+        <% end -%>
+      </p>
+    </div>
+  </div>
+
+
+  
+  
+  <div class = 'container' >
+    <% flash.each do |name, msg| %>
+     <p class="alert alert-dismissable alert-<%= name == :notice ? "success" : "danger" %> ">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  
+      <%= msg %>
+    </p>
+    <% end -%>
+  </div>
+
+<%= yield %>
+
+<div class =' footer container'> 
+  <hr>
+  <p>&copy; 2014 Bryce Jobs 'training' </p>
+</div>
+</body>
+</html>
